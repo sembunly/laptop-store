@@ -17,7 +17,7 @@
         <a href="{{ url('/') }}" class="text-decoration-none">Home</a>
       </li>
       <li class="breadcrumb-item">
-        <a href="{{ url('/products') }}" class="text-decoration-none">Products</a>
+        <a href="{{ url('/categories') }}" class="text-decoration-none">Categories</a>
       </li>
     </ol>
   </nav>

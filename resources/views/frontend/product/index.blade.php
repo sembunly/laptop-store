@@ -1,8 +1,8 @@
 @extends('layouts.frontend')
 
 @section('title', 'Products')
-@section('hero_title', 'Products in ' . $category->name)
-@section('hero_subtitle', 'Filter and sort products easily')
+@section('hero_title', 'All Products')
+@section('hero_subtitle', 'Browse all available products')
 
 @section('hero_action')
   <a class="px-4 btn btn-outline-dark pill" href="{{ route('categories.index') }}">

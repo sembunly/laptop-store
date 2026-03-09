@@ -21,12 +21,6 @@
 @section('content')
   <div class="gap-2 mb-3 d-flex flex-column flex-md-row justify-content-between align-items-md-center">
     <h3 class="m-0 fw-bold">Categories</h3>
-
-    <div class="gap-2 d-flex">
-      <a class="px-3 btn btn-outline-dark pill" href="{{ route('products.index') }}">
-        <i class="bi bi-arrow-left me-1"></i> Back to Products
-      </a>
-    </div>
   </div>
 
   <div class="row g-3">

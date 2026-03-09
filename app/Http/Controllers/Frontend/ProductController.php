@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
+
 class ProductController extends Controller
 {
     public function index(Request $request)
@@ -53,7 +54,7 @@ class ProductController extends Controller
         $products = $query->paginate(12);
         $categories = Category::all();
 
-        return view('frontend.products', compact('products', 'categories'));
+        return view('frontend.product.index', compact('products', 'categories'));
     }
 
     public function show(Product $product)
