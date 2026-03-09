@@ -1,17 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.frontend')
+
 
 @section('title','Checkout')
 @section('hero_title','Checkout')
 @section('hero_subtitle','Enter address, choose payment, confirm order')
 @section('hero_action')
-  <a class="btn btn-outline-dark pill px-4" href="{{ route('cart.index') }}">
+  <a class="px-4 btn btn-outline-dark pill" href="{{ route('cart.index') }}">
     <i class="bi bi-arrow-left me-1"></i> Back to Cart
   </a>
 @endsection
 
 @section('breadcrumb')
   <nav aria-label="breadcrumb">
-    <ol class="breadcrumb mb-0">
+    <ol class="mb-0 breadcrumb">
       <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-decoration-none">Home</a></li>
       <li class="breadcrumb-item"><a href="{{ route('cart.index') }}" class="text-decoration-none">Cart</a></li>
       <li class="breadcrumb-item active" aria-current="page">Checkout</li>
@@ -30,10 +31,10 @@
 @endphp
 
 @if(count($cartItems) === 0)
-  <div class="alert alert-light border rounded-4 p-4">
+  <div class="p-4 border alert alert-light rounded-4">
     <div class="fw-bold">Cart is empty.</div>
     <div class="text-muted">Please add products before checkout.</div>
-    <a href="{{ route('home') }}" class="btn btn-dark pill mt-3">Go Home</a>
+    <a href="{{ route('home') }}" class="mt-3 btn btn-dark pill">Go Home</a>
   </div>
 @else
 
@@ -43,46 +44,40 @@
   <div class="row g-3 g-lg-4">
     {{-- Left: Address + Payment --}}
     <div class="col-lg-7">
-      <div class="card soft-card p-3 p-md-4 mb-3">
-        <h5 class="fw-bold mb-3">Delivery Address</h5>
+  <div class="p-3 mb-3 card soft-card p-md-4">
+    <h5 class="mb-3 fw-bold">Delivery Address</h5>
 
-        <div class="row g-2">
-          <div class="col-md-6">
-            <label class="form-label small text-muted mb-1">Full Name</label>
-            <input name="customer_name" value="{{ old('customer_name') }}" class="form-control pill" required>
-            @error('customer_name')<div class="text-danger small mt-1">{{ $message }}</div>@enderror
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label small text-muted mb-1">Phone</label>
-            <input name="customer_phone" value="{{ old('customer_phone') }}" class="form-control pill" required>
-            @error('customer_phone')<div class="text-danger small mt-1">{{ $message }}</div>@enderror
-          </div>
-
-          <div class="col-12">
-            <label class="form-label small text-muted mb-1">Address Line</label>
-            <input name="address_line" value="{{ old('address_line') }}" class="form-control pill" placeholder="House No, Street, Commune..." required>
-            @error('address_line')<div class="text-danger small mt-1">{{ $message }}</div>@enderror
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label small text-muted mb-1">City (Optional)</label>
-            <input name="city" value="{{ old('city') }}" class="form-control pill" placeholder="Phnom Penh...">
-            @error('city')<div class="text-danger small mt-1">{{ $message }}</div>@enderror
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label small text-muted mb-1">Note (Optional)</label>
-            <input name="note" value="{{ old('note') }}" class="form-control pill" placeholder="Leave at door...">
-            @error('note')<div class="text-danger small mt-1">{{ $message }}</div>@enderror
-          </div>
-        </div>
+    <div class="row g-2">
+      <div class="col-md-6">
+        <label class="mb-1 form-label small text-muted">Full Name</label>
+        <input name="full_name" value="{{ old('full_name') }}" class="form-control pill" required>
+        @error('full_name')<div class="mt-1 text-danger small">{{ $message }}</div>@enderror
       </div>
 
-      <div class="card soft-card p-3 p-md-4">
-        <h5 class="fw-bold mb-3">Payment</h5>
+      <div class="col-md-6">
+        <label class="mb-1 form-label small text-muted">Phone</label>
+        <input name="phone" value="{{ old('phone') }}" class="form-control pill" required>
+        @error('phone')<div class="mt-1 text-danger small">{{ $message }}</div>@enderror
+      </div>
 
-        <div class="d-flex gap-2 flex-wrap">
+      <div class="col-12">
+        <label class="mb-1 form-label small text-muted">Address</label>
+        <textarea name="address" class="form-control" placeholder="House No, Street, Commune, City..." required>{{ old('address') }}</textarea>
+        @error('address')<div class="mt-1 text-danger small">{{ $message }}</div>@enderror
+      </div>
+
+      <div class="col-12">
+        <label class="mb-1 form-label small text-muted">Note (Optional)</label>
+        <input name="note" value="{{ old('note') }}" class="form-control pill" placeholder="Leave at door...">
+        @error('note')<div class="mt-1 text-danger small">{{ $message }}</div>@enderror
+      </div>
+    </div>
+  </div>
+
+      <div class="p-3 card soft-card p-md-4">
+        <h5 class="mb-3 fw-bold">Payment</h5>
+
+        <div class="flex-wrap gap-2 d-flex">
           <label class="btn btn-outline-dark pill">
             <input type="radio" class="form-check-input me-2" name="payment_method" value="cod"
                    @checked(old('payment_method','cod')=='cod')>
@@ -95,30 +90,30 @@
             Pay by QR
           </label>
         </div>
-        @error('payment_method')<div class="text-danger small mt-2">{{ $message }}</div>@enderror
+        @error('payment_method')<div class="mt-2 text-danger small">{{ $message }}</div>@enderror
 
         {{-- QR extra fields --}}
         <div id="qrBox" class="mt-3" style="display:none;">
-          <div class="alert alert-light border rounded-4">
-            <div class="fw-bold mb-2">QR Payment</div>
+          <div class="border alert alert-light rounded-4">
+            <div class="mb-2 fw-bold">QR Payment</div>
             <div class="text-muted small">Upload receipt image or enter payment reference (optional).</div>
           </div>
 
           <div class="row g-2">
             <div class="col-md-6">
-              <label class="form-label small text-muted mb-1">Payment Ref (Optional)</label>
+              <label class="mb-1 form-label small text-muted">Payment Ref (Optional)</label>
               <input name="payment_ref" value="{{ old('payment_ref') }}" class="form-control pill" placeholder="Transaction ID">
-              @error('payment_ref')<div class="text-danger small mt-1">{{ $message }}</div>@enderror
+              @error('payment_ref')<div class="mt-1 text-danger small">{{ $message }}</div>@enderror
             </div>
 
             <div class="col-md-6">
-              <label class="form-label small text-muted mb-1">Upload Receipt (Optional)</label>
+              <label class="mb-1 form-label small text-muted">Upload Receipt (Optional)</label>
               <input type="file" name="receipt_image" class="form-control pill" accept="image/*" id="receiptInput">
-              @error('receipt_image')<div class="text-danger small mt-1">{{ $message }}</div>@enderror
+              @error('receipt_image')<div class="mt-1 text-danger small">{{ $message }}</div>@enderror
             </div>
 
             <div class="col-12" id="receiptPreview" style="display:none;">
-              <div class="rounded-4 overflow-hidden" style="box-shadow: var(--soft-shadow);">
+              <div class="overflow-hidden rounded-4" style="box-shadow: var(--soft-shadow);">
                 <img id="receiptImg" src="" style="width:100%;max-height:280px;object-fit:cover;" alt="receipt">
               </div>
             </div>
@@ -130,12 +125,12 @@
 
     {{-- Right: Order summary --}}
     <div class="col-lg-5">
-      <div class="card soft-card p-3 p-md-4">
-        <h5 class="fw-bold mb-3">Confirm Order</h5>
+      <div class="p-3 card soft-card p-md-4">
+        <h5 class="mb-3 fw-bold">Confirm Order</h5>
 
-        <div class="small text-muted mb-2">Items</div>
+        <div class="mb-2 small text-muted">Items</div>
 
-        <div class="d-grid gap-2">
+        <div class="gap-2 d-grid">
           @foreach($cartItems as $pid => $it)
             <div class="d-flex justify-content-between">
               <div class="me-2">
@@ -157,7 +152,7 @@
           <span>Subtotal</span>
           <span>${{ number_format($subtotal,2) }}</span>
         </div>
-        <div class="d-flex justify-content-between text-muted mt-2">
+        <div class="mt-2 d-flex justify-content-between text-muted">
           <span>Shipping</span>
           <span>${{ number_format($shipping,2) }}</span>
         </div>
@@ -169,11 +164,11 @@
           <span class="fw-bold fs-5">${{ number_format($total,2) }}</span>
         </div>
 
-        <button class="btn btn-dark pill w-100 mt-3 py-2">
+        <button class="py-2 mt-3 btn btn-dark pill w-100">
           <i class="bi bi-check2-circle me-1"></i> Place Order
         </button>
 
-        <div class="text-muted small mt-3">
+        <div class="mt-3 text-muted small">
           <i class="bi bi-shield-check me-1"></i> Your info is protected.
         </div>
       </div>

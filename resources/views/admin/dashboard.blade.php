@@ -57,7 +57,7 @@
                     <h4 class="text-white card-title">Total Categories</h4>
                     <div class="d-flex justify-content-between align-items-center">
                         <i class="mdi mdi-receipt mdi-36px"></i>
-                        
+                        <h2 class="mb-0">{{$totalCategories}}</h2>
                     </div>
                 </div>
             </div>

@@ -58,7 +58,7 @@
             <div class="collapse" id="orders">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">All Orders</a>
+                        <a class="nav-link" href="{{ route('admin.orders.index') }}">All Orders</a>
                     </li>
                 </ul>
             </div>

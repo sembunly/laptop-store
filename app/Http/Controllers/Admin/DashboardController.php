@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Category;
 
 class DashboardController extends Controller
 {
@@ -15,12 +16,14 @@ class DashboardController extends Controller
         $totalOrders = Order::count();
         $totalUsers = User::count();
         $totalRevenue = Order::sum('total_amount');
+        $totalCategories = Category::count();
 
         return view('admin.dashboard', compact(
             'totalProducts',
             'totalOrders',
             'totalUsers',
-            'totalRevenue'
+            'totalRevenue',
+            'totalCategories'
         ));
     }
 }
