@@ -169,12 +169,12 @@
                   Detail
                 </a>
 
-                <button type="button"
-                        class="flex-shrink-0 px-3 py-2 btn btn-success pill btn-sm js-add-to-cart"
-                        data-url="{{ route('cart.add', $p->id) }}"
-                        data-name="{{ $p->name }}">
+              <button type="button"
+                  class="flex-shrink-0 px-3 py-2 btn btn-success pill btn-sm js-add-to-cart"
+                  data-url="{{ route('cart.add', $p->id) }}"
+                  data-name="{{ $p->name }}">
                   + Add
-                </button>
+              </button>
               </div>
 
             </div>
@@ -195,7 +195,7 @@
   document.querySelectorAll('.js-add-to-cart').forEach(btn => {
     btn.addEventListener('click', async () => {
       const url = btn.dataset.url;
-      const name = btn.dataset.name || "Item";
+      const name = btn.dataset.name || 'Item';
 
       btn.disabled = true;
       const oldHtml = btn.innerHTML;
@@ -207,6 +207,7 @@
           headers: {
             'X-CSRF-TOKEN': '{{ csrf_token() }}',
             'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
             'Content-Type': 'application/x-www-form-urlencoded'
           },
           body: new URLSearchParams({ qty: 1 })
@@ -214,7 +215,7 @@
 
         const data = await res.json().catch(() => ({}));
 
-        if (!res.ok || !data.ok) {
+        if (!res.ok) {
           throw new Error(data.message || 'Request failed');
         }
 

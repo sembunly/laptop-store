@@ -52,4 +52,13 @@ class CategoryController extends Controller
 
         return view('frontend.product.index', compact('category', 'products'));
     }
-}
+
+        public function products($id)
+        {
+            $category = Category::findOrFail($id);
+
+            $products = $category->products()->latest()->paginate(12);
+
+            return view('frontend.categories.products', compact('category', 'products'));
+        }
+    }
