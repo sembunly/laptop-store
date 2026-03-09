@@ -71,7 +71,7 @@
             <button type="button"
                     class="p-0 overflow-hidden border-0 btn rounded-4 thumb-btn"
                     data-img="{{ $t }}"
-                    style="width:84px;height:70px;box-shadow: 0 8px 18px rgba(0,0,0,.08);">
+                    style="width:100%;height:500px;box-shadow: 0 8px 18px rgba(0,0,0,.08);">
               <img src="{{ $t }}" style="width:100%;height:100%;object-fit:cover;" alt="thumb">
             </button>
           @endforeach

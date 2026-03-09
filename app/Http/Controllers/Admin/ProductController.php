@@ -86,35 +86,36 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
-    {
-        $data = $request->validate([
-            'name' => 'required',
-            'brand' => 'required',
-            'model' => 'required',
-            'price' => 'required|numeric',
-            'stock' => 'required|integer',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
-        ]);
+public function update(Request $request, Product $product)
+{
+    $data = $request->validate([
+        'name' => 'required|string|max:255',
+        'brand' => 'required|string|max:255',
+        'model' => 'required|string|max:255',
+        'category_id' => 'required|exists:categories,id',
+        'price' => 'required|numeric',
+        'stock' => 'required|integer',
+        'ram' => 'nullable|string|max:255',
+        'storage' => 'nullable|string|max:255',
+        'processor' => 'nullable|string|max:255',
+        'screen_size' => 'nullable|string|max:255',
+        'description' => 'nullable|string',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
+    ]);
 
-        if ($request->hasFile('image')) {
-
-            $file = $request->file('image');
-
-            $filename = time() . '_' . $file->getClientOriginalName();
-
-            $file->move(public_path('images/products'), $filename);
-
-            // save only filename
-            $data['image'] = $filename;
-        }
-
-        $product->update($data);
-
-        return redirect()
-            ->route('admin.products.index')
-            ->with('success','Product updated successfully');
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('images/products'), $filename);
+        $data['image'] = $filename;
     }
+
+    $product->update($data);
+
+    return redirect()
+        ->route('admin.products.index')
+        ->with('success', 'Product updated successfully');
+}
 
     /**
      * Remove the specified resource from storage.
