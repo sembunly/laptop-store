@@ -20,17 +20,17 @@
   <body>
     <div class="container-scroller">
       <div class="container-fluid page-body-wrapper full-page-wrapper">
-        <div class="content-wrapper d-flex align-items-center auth px-0">
-          <div class="row w-100 mx-0">
-            <div class="col-lg-4 mx-auto">
-              <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+        <div class="px-0 content-wrapper d-flex align-items-center auth">
+          <div class="mx-0 row w-100">
+            <div class="mx-auto col-lg-4">
+              <div class="px-4 py-5 text-left auth-form-light px-sm-5">
                 
-                <div class="brand-logo text-center">
-                  <img src="../../assets/images/logo.svg" alt="logo">
+                <div class="text-center">
+                  <h1>GenZ Electronics</h1><br>
                 </div>
 
                 <h4>Hello! let's get started</h4>
-                <h6 class="fw-light mb-4">Sign in to continue.</h6>
+                <h6 class="mb-4 fw-light">Sign in to continue.</h6>
 
                 @if (session('status'))
                   <div class="alert alert-success">
@@ -88,20 +88,20 @@
                     </div>
 
                     @if (Route::has('password.request'))
-                      <a href="{{ route('password.request') }}" class="auth-link text-black">
-                        Forgot password?
+                      <a href="{{ route('password.request') }}" class="text-black auth-link">
+                       <!-- Forgot password? -->
                       </a>
                     @endif
                   </div>
 
-                  <div class="mt-3 d-grid gap-2">
+                  <div class="gap-2 mt-3 d-grid">
                     <button type="submit" class="btn btn-block btn-primary btn-lg fw-medium auth-form-btn">
                       SIGN IN
                     </button>
                   </div>
 
                   @if (Route::has('register'))
-                    <div class="text-center mt-4 fw-light">
+                    <div class="mt-4 text-center fw-light">
                       Don't have an account?
                       <a href="{{ route('register') }}" class="text-primary">Create</a>
                     </div>
