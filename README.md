@@ -113,16 +113,6 @@ Shopping Cart
 Checkout Page
 Admin Dashboard
 ```
-
----
-
-# Future Improvements
-
-- User authentication
-- Order history
-- Payment gateway integration
-- Admin analytics dashboard
-
 ---
 
 # Author
@@ -132,8 +122,4 @@ Admin Dashboard
 GitHub  
 https://github.com/sembunly
 
----
 
-# License
-
-This project is open-sourced software licensed under the MIT license.
