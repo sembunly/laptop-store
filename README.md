@@ -100,10 +100,6 @@ http://127.0.0.1:8000
 
 ---
 
-# Screenshots
-
-(Add your project screenshots here)
-
 Example:
 
 ```
