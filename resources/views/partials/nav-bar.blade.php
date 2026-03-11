@@ -1,7 +1,7 @@
-<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+<nav class="flex-row p-0 navbar default-layout col-lg-12 col-12 fixed-top d-flex align-items-top">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
         <div class="me-3">
-            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+            <button class="navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
                 <span class="icon-menu"></span>
             </button>
         </div>
@@ -39,10 +39,10 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                    <div class="dropdown-header text-center">
+                    <div class="text-center dropdown-header">
                         <img class="img-md rounded-circle" src="{{ asset('staradmin/images/faces/face8.jpg') }}" alt="Profile image">
-                        <p class="mb-1 mt-3 fw-semibold">{{ auth()->user()->name ?? 'Admin' }}</p>
-                        <p class="fw-light text-muted mb-0">{{ auth()->user()->email ?? 'admin@gmail.com' }}</p>
+                        <p class="mt-3 mb-1 fw-semibold">{{ auth()->user()->name ?? 'Admin' }}</p>
+                        <p class="mb-0 fw-light text-muted">{{ auth()->user()->email ?? 'admin@gmail.com' }}</p>
                     </div>
 
                     <a class="dropdown-item" href="{{ route('profile.edit') }}">
