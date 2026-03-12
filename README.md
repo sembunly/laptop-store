@@ -111,10 +111,6 @@ Admin Dashboard
 ```
 ---
 
-# Author
-
-**Sem Bunly**
-
 GitHub  
 https://github.com/sembunly
 
